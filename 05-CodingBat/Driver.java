@@ -1,0 +1,11 @@
+
+public class Driver {
+    public static void main(String[] args) {
+	stringStuff s = new stringStuff();
+
+	System.out.println(s.nonStart("Hello","There"));
+	System.out.println(s.makeAbba("Hi","Bye"));
+	System.out.println(s.diff21(19));
+    }
+
+}
