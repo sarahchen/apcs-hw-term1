@@ -10,6 +10,9 @@ public class Driver {
 	System.out.println("5 by 5");
 	System.out.println(v.box(5,5));
 	
+	System.out.println(v.tri1(3));
+
+	System.out.println(v.tri2(3));
     }
 
 }

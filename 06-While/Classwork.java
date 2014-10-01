@@ -14,4 +14,38 @@ public class Classwork {
 	return ans;
     }
 
+    public String tri1(int n) {
+	String ans = "";
+	int x = 1;
+	while (x <= n) {
+	    int y = 1;
+	    while (y <= x) {
+		ans = ans + "*";
+		y = y + 1;
+	    }
+	    ans = ans + "\n";
+	    x = x + 1;
+	}
+	return ans;
+    }
+
+    public String tri2(int n){
+	String ans = "";
+	int x = 1;
+	while (x <= n) {
+	    int y = 1;
+	    while (y < x) {
+		ans = ans + " ";
+		y = y + 1;
+	    }
+	    while (y > 0) {
+		ans = ans + "*";
+		y = y - 1;
+	    }
+	    ans = ans + "\n";
+	    x = x + 1;
+	}
+	return ans;
+    }
+
 }
