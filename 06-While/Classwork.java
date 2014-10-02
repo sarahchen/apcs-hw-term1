@@ -33,14 +33,16 @@ public class Classwork {
 	String ans = "";
 	int x = 1;
 	while (x <= n) {
-	    int y = 1;
-	    while (y < x) {
+	    int space = n - x;
+	    int i = 0;
+	    while ( i < space) {
 		ans = ans + " ";
-		y = y + 1;
+		i = i + 1;
 	    }
-	    while (y > 0) {
+	    int y = 1;
+	    while (y <= x) {
 		ans = ans + "*";
-		y = y - 1;
+		y = y + 1;
 	    }
 	    ans = ans + "\n";
 	    x = x + 1;
