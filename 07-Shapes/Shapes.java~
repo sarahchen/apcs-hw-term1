@@ -1,5 +1,6 @@
 
 public class Shapes {
+<<<<<<< HEAD
 
     public String tri1(int n) {
 	String ans = "";
@@ -33,6 +34,27 @@ public class Shapes {
 	    }
 	    ans = ans + "\n";
 	    x = x + 1;
+=======
+     public String tri3(int x){
+	int indexX = 1;
+	int indexY = 1;
+	int Count = 1;
+	String ans = "";
+	while (indexY <= x){
+	    int space = x - Count;
+	    while (space > 0){
+		ans = ans + " ";
+		space = space - 1;
+	    }
+	    while (indexX > 0){
+		ans = ans + "*";
+		indexX = indexX - 1;
+	    }
+	    indexY = indexY + 1;
+	    Count = indexY;
+	    indexX = (indexY * 2) - 1;
+	    ans = ans + "\n";
+>>>>>>> 55d4ed028e0b4110476a0dcf4e74ed521538a845
 	}
 	return ans;
     }
