@@ -40,8 +40,10 @@ public class Shapes {
 	    }
 	    ans = ans + "\n";
 	    x = x + 1;
-
-     public String tri3(int x){
+	}
+	return ans;
+    }
+    public String tri3(int x){
 	int indexX = 1;
 	int indexY = 1;
 	int Count = 1;
@@ -63,7 +65,7 @@ public class Shapes {
 	}
 	return ans;
     }
-
+    
     public String tri4(int h) {
 	String tri = "";
 	int ind = 0;
@@ -82,6 +84,7 @@ public class Shapes {
 	    ind = ind + 1;
 	}
 	return tri;
+    }
 
     public String diamond(int h) {
 	String diamond = "";
@@ -103,7 +106,7 @@ public class Shapes {
 		diamond = diamond + "*";
 		star = star - 1;
 	    }
-
+	    
 	    diamond = diamond + "\n";
 	    row = row + 1;
 	}
