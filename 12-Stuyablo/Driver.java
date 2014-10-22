@@ -2,7 +2,7 @@
 
 import java.util.*;
 import java.io.*;
-public class DriverFinal{
+public class Driver{
     public static void main(String[] args){
         Random number = new Random();
         Scanner sc = new Scanner(System.in);
