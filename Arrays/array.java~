@@ -1,0 +1,16 @@
+public class array {
+    public static void main(String[] args) {
+	
+	//declare an array to hold ints
+	int[] intArray;
+	//declare an array to hold Strings
+	String[] stringArray;
+
+	//HAVE to say how many things in array
+	intArray = new int[5];
+	stringArray = new String[5];
+
+	//in one line
+	int[] intArray2 = new int[10];
+    }
+}
