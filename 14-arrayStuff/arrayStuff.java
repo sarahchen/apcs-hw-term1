@@ -14,14 +14,11 @@ public class arrayStuff {
     }
     
     public int find(int n) {
-	int ans = 0;
+	int ans = -1;
         for(int i=0; i<a.length; i++) {
 	    if(a[i] == n) {
 		ans = i;
 		break;
-	    }
-	    else {
-		ans = -1;
 	    }
 	}
 	return ans;
