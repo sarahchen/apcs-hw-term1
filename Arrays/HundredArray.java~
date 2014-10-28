@@ -1,0 +1,14 @@
+import java.io.*;
+import java.util.*;
+public class HundredArray {
+    public static void main(String[] args) {
+	int[] intArray;
+	Random number = new Random();
+	
+	for(i=0;i<100;i++){
+	    intArray[i] = number.nextInt(75) + 75;
+	}
+	
+	System.out.println(intArray);
+    }
+}
