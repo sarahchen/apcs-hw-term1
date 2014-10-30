@@ -32,10 +32,22 @@ public class arrayStuff {
 	return ans;
     }
 
+    public int freq(int i) {
+	int num = a[i];
+	int count = 0;
+	for(int x=0;x<a.length;x++) {
+	    if(a[x] == num) {
+		count = count + 1;
+	    }
+	}
+	return count;
+    }
+
     public static void main(String[] args) {
 	arrayStuff array = new arrayStuff(100);
 	System.out.println(array.find(90));
 	System.out.println(array.maxVal());
+	System.out.println(array.freq(2));
     }
 
 }
