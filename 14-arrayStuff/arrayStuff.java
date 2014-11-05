@@ -9,7 +9,7 @@ public class arrayStuff {
         a = new int[n];
 	r = new Random();
 	for (int i=0;i<a.length;i++) {
-	    a[i] = 75+r.nextInt(76);
+	    a[i] = r.nextInt(21);
 	}
     }
     
@@ -41,13 +41,28 @@ public class arrayStuff {
 	    }
 	}
 	return count;
+    } 
+
+    // -------------------November 5 --------------------- //
+
+    public int mode() {
+        int count = 0;
+	int mode = -1;
+	for(int i=0;i<a.length;i++) {
+	    if(freq(i) > count) {
+		count = freq(i);
+		mode = i;
+	    }
+	}
+	System.out.println(a[mode]);
+	return count;
     }
+
+
+    // -----------------------Main------------------------ //
 
     public static void main(String[] args) {
-	arrayStuff array = new arrayStuff(100);
-	System.out.println(array.find(90));
-	System.out.println(array.maxVal());
-	System.out.println(array.freq(2));
+	arrayStuff array = new arrayStuff(10);
+	System.out.println("modecount = "+array.mode());
     }
-
 }
