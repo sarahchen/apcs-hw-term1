@@ -9,7 +9,7 @@ public class arrayStuff {
         a = new int[n];
 	r = new Random();
 	for (int i=0;i<a.length;i++) {
-	    a[i] = r.nextInt(21);
+	    a[i] = r.nextInt(20);
 	}
     }
     
@@ -43,6 +43,15 @@ public class arrayStuff {
 	return count;
     } 
 
+    public String toString() {
+	String s = "";
+	for(int i=0;i<a.length;i++) {
+	    if (i == a.length -1) { s = s + " " + a[i]; }
+	    else {s = s + " " +  a[i];}
+	}
+	return s;
+    }
+
     // -------------------November 5 --------------------- //
 
     public int mode() {
@@ -58,11 +67,27 @@ public class arrayStuff {
 	return count;
     }
 
+    // -----------------November 6 ----------------------- //
+
+    public int fastMode() {
+	int[] bucket = new int[20];
+	int mode = -1;
+	int modeIndex = -1;
+	for(int i=0;i<a.length;i++) {
+	    bucket[a[i]] = bucket[a[i]] + 1;
+	    if (bucket[a[i]] > mode) {
+		mode = bucket[a[i]];
+		modeIndex = a[i];
+	    }
+	}
+	return modeIndex;
+    } 
 
     // -----------------------Main------------------------ //
 
     public static void main(String[] args) {
-	arrayStuff array = new arrayStuff(10);
-	System.out.println("modecount = "+array.mode());
+	arrayStuff array = new arrayStuff(100);
+	System.out.println(array.toString());
+      	System.out.println("modecount = "+array.fastMode());
     }
 }
