@@ -1,0 +1,15 @@
+import java.util.*;
+import java.io.*;
+
+public class Driver {
+    private ArrayList al = new ArrayList<integer>();
+    private Random r = new Random();
+    
+    for(int i=0;i<r.nextInt(10);i++) {
+	al.add(i, r.nextInt(10));
+    }
+
+    public static void main(String[] args) {
+	System.out.println(al);
+    }
+}
