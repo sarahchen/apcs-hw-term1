@@ -7,9 +7,14 @@ public class WordSearch {
 
     public WordSearch(int r, int c) {
 	board = new char[r][c];
+	for(int i = 0; i<board.length; i++) {
+	    for(int j = 0; j<board[i].length; j++) {
+		board[i][j] = '.';
+	    }
+	}
     }
     public WordSearch() {
-	this(30,20);
+	this(30,30);
     }
 
     public String toString() {
@@ -23,9 +28,97 @@ public class WordSearch {
 	return s;
     }
 
+    public void addH(String s, int row, int col) {
+	int r = row, c = col;
+	
+	for(int i=0; i<s.length();i++) {
+	    board[r][c] = s.charAt(i);
+	    c++;
+	    if(c>board[r].length) {
+		break;
+	    }
+	}
+    }
+
+    public void addHBackward(String s, int row, int col) {
+	int r = row, c = col;
+
+	for(int i=s.length()-1;i>=0;i--) {
+	    board[r][c] = s.charAt(i);
+	    c++;
+	    if(c<0) { break; }
+	}
+    }
+
+    public void addV(String s, int row, int col) {
+	int r = row, c = col;
+	
+	for(int i=0; i<s.length();i++) {
+	    board[r][c] = s.charAt(i);
+	    r++;
+	    if(r> board.length) {break;}
+	}
+    }
+    
+    public void addVBackwards(String s, int row, int col) {
+	int r = row, c = col;
+	
+	for(int i=s.length()-1; i>=0;i--) {
+	    board[r][c] = s.charAt(i);
+	    r++;
+	    if(r<0) {break;}
+	}
+    }
+    
+    public void addDUpR(String s, int row, int col) {
+	int r = row, c = col;
+	
+	for(int i=0; i<s.length();i++) {
+	    board[r][c] = s.charAt(i);
+	    r++;
+	    c++;
+	    if(c > board[row].length || r > board.length) {break;}
+	}
+    }
+
+    public void addDUpL(String s, int row, int col) {
+	int r = row, c = col;
+	
+	for(int i=0; i<s.length();i++) {
+	    board[r][c] = s.charAt(i);
+	    r++;
+	    c--;
+	}
+    }
+
+    public void addDDownR(String s, int row, int col) {
+	int r = row, c = col;
+	
+	for(int i=0; i<s.length();i++) {
+	    board[r][c] = s.charAt(i);
+	    r--;
+	    c++;
+	}
+    }
+
+    public void addDDownL(String s, int row, int col) {
+	int r = row, c = col;
+	
+	for(int i=0; i<s.length();i++) {
+	    board[r][c] = s.charAt(i);
+	    r--;
+	    c--;
+	}
+    }
+
+
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
-	System.out.println(w.toString());
+	System.out.println(w);
+	w.addH("hello", 3, 5);
+	System.out.println(w);
+	w.addHBackward("hello", 4, 6);
+	System.out.println(w);
     }
 
 }
