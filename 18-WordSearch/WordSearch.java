@@ -30,12 +30,11 @@ public class WordSearch {
 
     public void addH(String s, int row, int col) {
 	int r = row, c = col;
-	
-	for(int i=0; i<s.length();i++) {
-	    board[r][c] = s.charAt(i);
-	    c++;
-	    if(c>board[r].length) {
-		break;
+
+	if (c+s.length() <= board[r].length) {
+	    for(int i=0; i<s.length();i++) {
+		board[r][c] = s.charAt(i);
+		c++;
 	    }
 	}
     }
@@ -43,77 +42,88 @@ public class WordSearch {
     public void addHBackward(String s, int row, int col) {
 	int r = row, c = col;
 
-	for(int i=s.length()-1;i>=0;i--) {
-	    board[r][c] = s.charAt(i);
-	    c++;
-	    if(c<0) { break; }
+	if(c-s.length() >= 0) {
+	    for(int i=s.length()-1;i>=0;i--) {
+		board[r][c] = s.charAt(i);
+		c++;
+	    }
 	}
     }
 
     public void addV(String s, int row, int col) {
 	int r = row, c = col;
-	
-	for(int i=0; i<s.length();i++) {
-	    board[r][c] = s.charAt(i);
-	    r++;
-	    if(r> board.length) {break;}
+
+	if(r+s.length() <= board.length) {
+	    for(int i=0; i<s.length();i++) {
+		board[r][c] = s.charAt(i);
+		r++;
+	    }
 	}
     }
     
     public void addVBackwards(String s, int row, int col) {
 	int r = row, c = col;
-	
-	for(int i=s.length()-1; i>=0;i--) {
-	    board[r][c] = s.charAt(i);
-	    r++;
-	    if(r<0) {break;}
+
+	if(r-s.length() >= 0) {
+	    for(int i=s.length()-1; i>=0;i--) {
+		board[r][c] = s.charAt(i);
+		r++;
+	    }
 	}
     }
     
     public void addDUpR(String s, int row, int col) {
 	int r = row, c = col;
-	
-	for(int i=0; i<s.length();i++) {
-	    board[r][c] = s.charAt(i);
-	    r++;
-	    c++;
-	    if(c > board[row].length || r > board.length) {break;}
+
+	if(r+s.length() <= board.length && c+s.length() <=board[r].length) {
+	    for(int i=0; i<s.length();i++) {
+		board[r][c] = s.charAt(i);
+		r++;
+		c++;
+	    }
 	}
     }
 
     public void addDUpL(String s, int row, int col) {
 	int r = row, c = col;
-	
-	for(int i=0; i<s.length();i++) {
-	    board[r][c] = s.charAt(i);
-	    r++;
-	    c--;
+
+	if(r+s.length() <= board.length && c-s.length() >= 0) {
+	    for(int i=0; i<s.length();i++) {
+		board[r][c] = s.charAt(i);
+		r++;
+		c--;
+	    }
 	}
     }
 
     public void addDDownR(String s, int row, int col) {
 	int r = row, c = col;
-	
-	for(int i=0; i<s.length();i++) {
-	    board[r][c] = s.charAt(i);
-	    r--;
-	    c++;
+
+	if(r-s.length() >=0 && c+s.length() <= board[r].length) {
+	    for(int i=0; i<s.length();i++) {
+		board[r][c] = s.charAt(i);
+		r--;
+		c++;
+	    }
 	}
     }
 
     public void addDDownL(String s, int row, int col) {
 	int r = row, c = col;
-	
-	for(int i=0; i<s.length();i++) {
-	    board[r][c] = s.charAt(i);
-	    r--;
-	    c--;
+
+	if(r-s.length() >= 0 && c-s.length() >= 0) {
+	    for(int i=0; i<s.length();i++) {
+		board[r][c] = s.charAt(i);
+		r--;
+		c--;
+	    }
 	}
     }
 
 
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
+	w.addDDownL("diagonal", 50, 2);
 	System.out.println(w);
 	w.addH("hello", 3, 5);
 	System.out.println(w);
