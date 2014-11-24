@@ -3,8 +3,11 @@ import java.util.*;
 
 public class WordSearch {
     
+    /* ---------- Instance Variables ----------- */
     private char[][] board;
+    private Random rng = new Random();
 
+    /* ---------- Constructor ----------- */
     public WordSearch(int r, int c) {
 	board = new char[r][c];
 	for(int i = 0; i<board.length; i++) {
@@ -28,6 +31,7 @@ public class WordSearch {
 	return s;
     }
 
+    /* ------------- Add Methods ----------- */
     public void addH(String s, int row, int col) {
 	int r = row, c = col;
 
@@ -121,14 +125,55 @@ public class WordSearch {
     }
 
 
-    public static void main(String[] args) {
-	WordSearch w = new WordSearch();
-	w.addDDownL("diagonal", 50, 2);
-	System.out.println(w);
-	w.addH("hello", 3, 5);
-	System.out.println(w);
-	w.addHBackward("hello", 4, 6);
-	System.out.println(w);
+    /* ------------ Smaller Add ------------ */
+    public boolean addWordHelper(String w, int row, int col, int deltaR, int deltaC) {
+        int r = row, c = col;
+	
+	for(int i=0;i<w.length();i++) {
+	    try {
+		if(board[r][c]!='.' && board[r][c]!=w.charAt(i)) {
+		    return false;
+		}
+	    } catch(Exception e) {
+		return false;
+	    }
+	    r = r + deltaR;
+	    c = c + deltaC;
+	}
+
+	r = row;
+	c = col;
+	
+	for(int i=0; i<w.length(); i++) {
+	    board[r][c] = w.charAt(i);
+	    r = r + deltaR;
+	    c = c + deltaC;
+	}
+	return true;
     }
 
+    public boolean addWord(String w) {
+	int row = rng.nextInt(board.length);
+	int col = rng.nextInt(board[row].length);
+	int deltaRow = -1 + rng.nextInt(3);
+	int deltaCol = -1 + rng.nextInt(3);
+	if (deltaRow == deltaCol && deltaCol == 0) {
+	    return false;
+	}
+	return addWordHelper(w, row, col, deltaRow, deltaCol);
+    }
+
+    public void fillIn() {
+	int row = board.length;
+	int col = board[row].length;
+	String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	
+    }
+    
+    public static void main(String[] args) {
+	WordSearch w = new WordSearch();
+	w.addWord("hello");
+	w.addWord("bye");
+	System.out.println(w);
+    }
 }
