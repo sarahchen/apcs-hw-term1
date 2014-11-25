@@ -5,10 +5,26 @@ public class WordSearch {
     
     /* ---------- Instance Variables ----------- */
     private char[][] board;
-    private Random rng = new Random();
+    private ArrayList<String> words;
+    private Random rng;
 
     /* ---------- Constructor ----------- */
     public WordSearch(int r, int c) {
+	rng = new Random();
+	words = new ArrayList<String>();
+
+	Scanner sc = null;
+	try {
+	    sc = new Scanner(new File("words.txt"));
+	} catch (Exception e) {
+	    System.out.println("Can't open wordlist");
+	    System.exit(0);
+	}
+
+	while(sc.hasNext()) {
+	    words.add(sc.nextLine());
+	}
+
 	board = new char[r][c];
 	for(int i = 0; i<board.length; i++) {
 	    for(int j = 0; j<board[i].length; j++) {
@@ -17,7 +33,7 @@ public class WordSearch {
 	}
     }
     public WordSearch() {
-	this(30,30);
+	this(30, 50);
     }
 
     public String toString() {
@@ -164,16 +180,37 @@ public class WordSearch {
     }
 
     public void fillIn() {
-	int row = board.length;
-	int col = board[row].length;
-	String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	String letters = "abcdefghijklmnopqrstuvwxyz";
 	
+	for(int r=0; r<board.length;r++) {
+	    for(int c=0;c<board[r].length;c++) {
+		if(board[r][c] == '.') {
+		    board[r][c] = letters.charAt(rng.nextInt(26));
+		}
+	    }
+	}
+    }
+
+    /* ------------ Make WordSearch from File ------------ */
+
+    ArrayList<String> wordsInPuzzle = new ArrayList<String>();
+    public void buildPuzzle(int numwords) {
+	while(numwords > 0) {
+	    int wordIndex = rng.nextInt(words.size());
+	    String word = words.get(wordIndex);
+	    if(addWord(word)) {
+		numwords--;
+		words.remove(wordIndex);
+		wordsInPuzzle.add(word);
+	    }
+	}
     }
     
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
-	w.addWord("hello");
-	w.addWord("bye");
+	w.buildPuzzle(10);
+	System.out.println(w);
+	w.fillIn();
 	System.out.println(w);
     }
 }
