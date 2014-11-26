@@ -1,0 +1,115 @@
+
+public class sarray {
+    
+    private String[] data;
+    private int last;
+    
+    /* ------ Constructor ------ */
+    public sarray() {
+	data = new String[10];
+    }
+    
+    public sarray(int i) {
+	data = new String[i];
+    }
+
+    /* ------ Methods ------ */
+
+    public String toString() {
+	String s = "";
+	for(int i=0;i<data.length;i++) {
+	    if (i == data.length -1) { 
+		s = s + " " + data[i]; 
+	    }
+	    else {s = s + " " +  data[i];}
+	}
+	return s;
+    }
+
+    public String[] shift(int start, int end) {
+	String[] storage = new String[end - start];
+	int index = -1;
+	for(int i=start;i<end;i++) {
+	    index += 1;
+	    storage[index] = data[i];
+	}
+	return storage;
+    }
+
+    public boolean add(int i) {
+	findLast();
+	if(last == 0) {
+	    data[0] = i;
+	}
+        else if(data.length <= last) {
+	    int[] storage = shift(0, last);
+	    data = new int[data.length + 1];
+	    for(int x=0;x<storage.length;x++){
+		data[x] = storage[x];
+	    }
+	    data[last + 1] = i;
+	} 
+	else {
+	    data[last + 1] = i;
+	}
+	return true;
+    }
+    
+    public void add(int index, int i) {
+	// add at location index, shift everything else down
+        int[] storage = shift(index, data.length);
+	data[index] = i;
+	int index2 = -1;
+	for(int x=index+1;x<data.length;x++) {
+	    index2 += 1;
+	    data[x] = storage[index2];
+	}
+    }
+
+    public int get(int index) {
+	// get item
+	return data[index];
+    }
+
+    public void set(int index, int i) {
+	// set value at index
+	data[index] = i;
+    }
+
+    public int size() {
+	// return size of list
+        int size = 0;
+	for(int i=0; i<data.length; i++) {
+	    if(data[i] != 0) {
+		size += 1;
+	    }
+	}
+	return size;
+    }
+
+    public void remove(int index) {
+	// remove item
+	data[index] = 0;
+    }
+
+    /* -------- MAIN --------- */
+    public static void main(String[] args) {
+	sarray s = new sarray();
+	System.out.println(s.toString());
+	System.out.println(s.size());
+	s.add(5);
+
+	System.out.println("NEW");
+	System.out.println(s.toString());
+	System.out.println(s.size());
+
+	s.add(6);
+	s.add(2, 4);
+	s.remove(0);
+	System.out.println(s.toString());
+	System.out.println(s.size());
+	
+    }
+
+    
+}
