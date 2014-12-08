@@ -87,13 +87,24 @@ public class SuperArray {
     }
 
     // Insertion Sort
-    public void iSort() {
+    /*    public void iSort() {
 	for(int x=0;x<data.length;x++) {
 	    int i;
 	    for(i=index;i>0 && data[x].compareTo(data[i-1]) > 0; i--) {
 		data[i] = data[i-1];
 	    }
 	    data[i] = data[x];
+	}
+	} */
+
+    public void iSort() {
+	int i,j;
+	for(i=1;i<data.length;i++) {
+	    String tmp = data[i];
+	    for(j=i-1; j>=0 && tmp.compareTo(data[j]) < 0; j--) {
+		data[j+1] = data[j];
+	    }
+	    data[j+1] = tmp;
 	}
     }
 
@@ -112,6 +123,19 @@ public class SuperArray {
 	    data[minimum] = replace;
 	}
     }
+
+    // Bubble Sort
+    public void bSort() {
+	for(int i=0; i<data.length; i++) {
+	    for(int j=i;j<data.length;j++) {
+		if(data[i].compareTo(data[j]) > 0) {
+		    String tmp = data[j];
+		    data[j] = data[i];
+		    data[i] = tmp;
+		}
+	    }
+	}
+    }
     
 
     /* -------- MAIN --------- */
@@ -124,12 +148,11 @@ public class SuperArray {
 	System.out.println(s);
 	s.add(2, "meh");
 	System.out.println(s);
-
-	//ahhhhhhhhhhhhhhh
 	s.add(3, "yay");
 	s.add(3, "no");
+	s.set(5, "hi");
+
 	System.out.println(s);
-	System.out.println(s.size());
     }
 
 }
