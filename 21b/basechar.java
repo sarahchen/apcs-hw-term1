@@ -1,12 +1,25 @@
+import java.io.*;
+import java.util.*;
+
 public class basechar implements Comparable{
-    private int health = 200;
-    private  int attack = 30;
-    private  int armor = 10;
-    private int mana = 50;
-    private  String name = "";
-    private int luck = 0;
+    private int health;
+    private  int attack;
+    private  int armor;
+    private int mana;
+    private  String name;
+    private int luck;
+    private String[] names = {"Bob","Henry","Tom","Sam"};
+    private Random rng = new Random();
     
     //Constructors
+    public basechar() {
+	health = 200;
+	attack = 30;
+	armor = 10;
+	mana = 50;
+	name = names[rng.nextInt(4)];
+	luck = 0;
+    }
     
     //Methods
     public int gethealth(){
@@ -61,7 +74,12 @@ public class basechar implements Comparable{
 	basechar[] people = new basechar[5];
 	
 	for(int i=0;i<people.length;i++) {
-	    basechar[i] = 
+	    people[i] = new basechar();
+	}
+	
+	Arrays.sort(people);
+	for(int x=0;x<people.length;x++) {
+	    System.out.println(people[x].getname());
 	}
 	
     }
