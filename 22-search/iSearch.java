@@ -12,7 +12,7 @@ public iSearch {
 	array = new Comparable[i];
     }
 
-    public Object lSearch(Comparable item) {
+    public Comparable lSearch(Comparable item) {
 	boolean found = false;
 	for(int i=0;i<array.length;i++) {
 	    if(array[i].equals(target)) {
@@ -23,13 +23,30 @@ public iSearch {
 	if(found) {return array[i];}
 	else {return null;}
     }
-    
-    public Object rbSearch(Comparable item) {
 
+    public Comparable bSearch(Comparable item) {
+	int high = array.length;
+	int low = 0;
+	while ((high - low) > 0) {
+	    int mid = (high + low) / 2;
+	    int compare = array[mid];
+	    if(compare.equals(item)) {
+		return array[mid];
+	    } else if (compare > item) {
+		high = mid;
+	    } else {
+		low = mid;
+	    }
+	}
+	return null;
     }
 
-    public Object bSearch(Comparable item) {
+    public Comparable rbSearch(int high, int low, Comparable item) {
+	
+    }
 
+    public Comparable rbSearch(Comparable item) {
+	
     }
 
 }
